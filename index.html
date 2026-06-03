@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Farm Management ERP</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="top-nav">
+      <a href="#dashboard" data-section="dashboard" class="active">Dashboard</a>
+      <a href="#field" data-section="field">Field</a>
+      <a href="#machinery" data-section="machinery">Machinery</a>
+      <a href="#stock" data-section="stock">Stock</a>
+      <a href="#worker" data-section="worker">Worker</a>
+    </nav>
+
+    <main class="app-shell">
+      <section class="page-section active" data-section="dashboard">
+        <h1>📊 Dashboard</h1>
+        <div class="dashboard-grid">
+          <article class="card">
+            <h3>Fields</h3>
+            <p>Manage crop fields, planting dates, and inputs.</p>
+            <button class="link-button" data-go="field">Open Fields</button>
+          </article>
+          <article class="card">
+            <h3>Machinery</h3>
+            <p>Track machine usage, fuel, and field assignments.</p>
+            <button class="link-button" data-go="machinery">Open Machinery</button>
+          </article>
+          <article class="card">
+            <h3>Stock</h3>
+            <p>Maintain fertilizer, pesticide, and fuel stock.</p>
+            <button class="link-button" data-go="stock">Open Stock</button>
+          </article>
+          <article class="card">
+            <h3>Workers</h3>
+            <p>Manage workers, attendance, and salary totals.</p>
+            <button class="link-button" data-go="worker">Open Workers</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="page-section" data-section="field">
+        <h1>🌾 Field ERP</h1>
+        <div class="layout split-layout">
+          <div class="sidebar panel">
+            <h3>Field Details</h3>
+            <input id="fname" placeholder="Field Name" />
+            <input id="crop" placeholder="Crop" />
+            <input id="supervisor" placeholder="Supervisor" />
+            <label>Planting</label>
+            <input id="plant" type="date" />
+            <label>Harvesting</label>
+            <input id="harvest" type="date" />
+            <h3>Fertilizer</h3>
+            <select id="fertType">
+              <option value="urea">Urea</option>
+              <option value="dap">DAP</option>
+              <option value="npk">NPK</option>
+            </select>
+            <input id="fertQty" type="number" placeholder="Qty" />
+            <h3>Pesticide</h3>
+            <select id="pestType">
+              <option value="sprayA">Spray A</option>
+              <option value="sprayB">Spray B</option>
+            </select>
+            <input id="pestQty" type="number" placeholder="Qty" />
+            <button id="addFieldBtn">➕ Add Field</button>
+          </div>
+          <div class="main panel">
+            <h2>Fields</h2>
+            <div id="fieldList"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section" data-section="machinery">
+        <h1>🚜 Machinery ERP</h1>
+        <div class="layout split-layout">
+          <div class="sidebar panel">
+            <h3>Assignment</h3>
+            <input id="mid" placeholder="Machinery ID" />
+            <input id="mname" placeholder="Machine Name" />
+            <input id="startMeter" placeholder="Start Meter" />
+            <input id="endMeter" placeholder="End Meter" />
+            <input id="fuel" placeholder="Fuel" />
+            <input id="machineField" placeholder="Field Name (REQUIRED)" />
+            <input id="machineWorker" placeholder="Worker Name" />
+            <input id="date" type="date" />
+            <button id="addMachineBtn">➕ Assign</button>
+          </div>
+          <div class="main panel">
+            <h2>Machines</h2>
+            <div id="machineList"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section" data-section="stock">
+        <h1>🚜 AGRI STOCK ERP PRO</h1>
+        <div class="stack">
+          <div class="card">
+            <div class="title">📦 Current Stock</div>
+            <b>⛽ Fuel:</b> <span id="fuelStock">0</span> L<br />
+            <b>🌱 Fertilizer:</b>
+            Urea: <span id="urea">0</span> | DAP: <span id="dap">0</span> | NPK: <span id="npk">0</span><br />
+            <b>☠️ Pesticide:</b>
+            Spray A: <span id="sprayA">0</span> | Spray B: <span id="sprayB">0</span>
+          </div>
+
+          <div class="card">
+            <div class="title">➕ Add Stock</div>
+            <h3>Fuel</h3>
+            <input id="addFuel" type="number" placeholder="Fuel liters" />
+            <button id="addFuelBtn">Add Fuel</button>
+            <h3>Fertilizer</h3>
+            <select id="fertTypeStock">
+              <option value="urea">Urea</option>
+              <option value="dap">DAP</option>
+              <option value="npk">NPK</option>
+            </select>
+            <input id="fertQtyStock" type="number" placeholder="Qty" />
+            <button id="addFertilizerBtn">Add Fertilizer</button>
+            <h3>Pesticide</h3>
+            <select id="pestTypeStock">
+              <option value="sprayA">Spray A</option>
+              <option value="sprayB">Spray B</option>
+            </select>
+            <input id="pestQtyStock" type="number" placeholder="Qty" />
+            <button id="addPesticideBtn">Add Pesticide</button>
+          </div>
+
+          <div class="card">
+            <div class="title">🚜 Use Stock</div>
+            <h3>Fuel Use</h3>
+            <input id="useFuel" type="number" placeholder="Fuel used" />
+            <button id="useFuelBtn">Use Fuel</button>
+            <h3>Fertilizer Use</h3>
+            <select id="useFertType">
+              <option value="urea">Urea</option>
+              <option value="dap">DAP</option>
+              <option value="npk">NPK</option>
+            </select>
+            <input id="useFertQty" type="number" placeholder="Qty" />
+            <button id="useFertilizerBtn">Use Fertilizer</button>
+            <h3>Pesticide Use</h3>
+            <select id="usePestType">
+              <option value="sprayA">Spray A</option>
+              <option value="sprayB">Spray B</option>
+            </select>
+            <input id="usePestQty" type="number" placeholder="Qty" />
+            <button id="usePesticideBtn">Use Pesticide</button>
+          </div>
+
+          <div class="card">
+            <div class="title">📜 History</div>
+            <div id="history"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section" data-section="worker">
+        <h1>👷 Worker Management System</h1>
+        <div class="layout worker-layout">
+          <div class="sidebar panel worker-panel">
+            <h3>Add Worker</h3>
+            <input id="name" placeholder="Name" />
+            <input id="cnic" placeholder="CNIC" />
+            <input id="phone" placeholder="Phone" />
+            <input id="salary" placeholder="Daily Salary" />
+            <button id="addWorkerBtn">➕ Add Worker</button>
+          </div>
+          <div class="main panel">
+            <div id="workerList"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
