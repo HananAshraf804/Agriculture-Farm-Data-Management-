@@ -1,0 +1,139 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 18px;
+  background: rgba(27, 67, 50, 0.95);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.top-nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.top-nav a.active {
+  background: rgba(255, 255, 255, 0.14);
+  font-weight: 700;
+}
+
+.app-shell {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.page-section {
+  display: none;
+}
+
+.page-section.active {
+  display: block;
+}
+
+.dashboard-grid,
+.stack,
+.layout {
+  display: grid;
+  gap: 16px;
+}
+
+.dashboard-grid {
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.stack {
+  grid-template-columns: 1fr;
+}
+
+.split-layout {
+  grid-template-columns: 320px 1fr;
+}
+
+.worker-layout {
+  grid-template-columns: 300px 1fr;
+}
+
+.card,
+.panel {
+  background: rgba(255, 255, 255, 0.95);
+  color: #111;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  padding: 18px;
+}
+
+.dashboard-grid .card {
+  display: flex;
+  flex-direction: column;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 6px 0;
+  border-radius: 10px;
+  border: 1px solid #d4d4d4;
+  font: inherit;
+}
+
+button,
+.link-button {
+  background: #2d6a4f;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover,
+.link-button:hover {
+  background: #1b4332;
+}
+
+.link-button {
+  width: auto;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.worker-card {
+  border-left: 5px solid #2d6a4f;
+}
+
+@media (max-width: 900px) {
+  .split-layout,
+  .worker-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .app-shell {
+    padding: 16px;
+  }
+
+  .top-nav {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
